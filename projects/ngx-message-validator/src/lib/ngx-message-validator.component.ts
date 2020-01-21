@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Optional, Host, SkipSelf } from '@angular/core';
 import { NG_VALUE_ACCESSOR, AbstractControl, FormGroupDirective, ControlValueAccessor } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { NgxMessageValidatorService } from './ngx-message-validator.service';
 
 @Component({
   selector: 'lib-ngx-message-validator',
@@ -85,8 +86,12 @@ export class NgxMessageValidatorComponent implements ControlValueAccessor, OnIni
 
   constructor(
     @Optional() @Host() @SkipSelf()
-    private controlContainer: FormGroupDirective
-  ) { }
+    private controlContainer: FormGroupDirective,
+    private service: NgxMessageValidatorService
+  ) {
+    const auxMessages = this.service.messages;
+    this.messages = Object.assign(auxMessages, this.messages);
+  }
 
   private buildMessage() {
     const keysErrors = Object.keys(this.control.errors);
@@ -103,6 +108,14 @@ export class NgxMessageValidatorComponent implements ControlValueAccessor, OnIni
           const max = this.control.errors.minlength;
           message = message.replace('?', max.actualLength);
           message = message.replace('?', max.requiredLength);
+        } else if (keyMessage[0] === 'min') {
+          const min = this.control.errors.min;
+          console.log(min);
+          // message = message.replace('?', min.actualLength);
+        } else if (keyMessage[0] === 'max') {
+          const max = this.control.errors.max;
+          console.log(max);
+          // message = message.replace('?', max.actualLength);
         }
         return message;
       }
