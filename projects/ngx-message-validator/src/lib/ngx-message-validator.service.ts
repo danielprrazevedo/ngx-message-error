@@ -1,13 +1,13 @@
 import { Injectable, Optional } from '@angular/core';
 
 export class MessagesConfig {
-  min: string;
-  max: string;
-  required: string;
-  requiredTrue: string;
-  email: string;
-  minLength: string;
-  maxLength: string;
+  min?: string;
+  max?: string;
+  required?: string;
+  requiredTrue?: string;
+  email?: string;
+  minLength?: string;
+  maxLength?: string;
   [key: string]: string;
 }
 

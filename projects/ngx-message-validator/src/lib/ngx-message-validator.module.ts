@@ -10,7 +10,7 @@ import { NgxMessageValidatorService, MessagesConfig } from './ngx-message-valida
   providers: [NgxMessageValidatorService]
 })
 export class NgxMessageValidatorModule {
-  static forRoot(messages: MessagesConfig): ModuleWithProviders {
+  static config(messages: MessagesConfig): ModuleWithProviders {
     return {
       ngModule: NgxMessageValidatorModule,
       providers: [
