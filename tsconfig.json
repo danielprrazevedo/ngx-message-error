@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-message-validator": [
+        "dist/ngx-message-validator"
+      ],
+      "ngx-message-validator/*": [
+        "dist/ngx-message-validator/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
