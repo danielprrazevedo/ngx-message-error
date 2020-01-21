@@ -4,7 +4,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { NgxMessageValidatorService } from './ngx-message-validator.service';
 
 @Component({
-  selector: 'lib-ngx-message-validator',
+  selector: 'ngx-message-validator',
   template: `
     <div *ngIf="erro" class="danger" [@enterAnimation]="erro">
       {{ erro }}

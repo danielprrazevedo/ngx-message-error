@@ -4,8 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class NgxMessageValidatorService {
-  constructor() {}
-
   messages = {
     min: 'Please enter a value greater than or equal to {0}.',
     max: 'Please enter a value less than or equal to {0}.',

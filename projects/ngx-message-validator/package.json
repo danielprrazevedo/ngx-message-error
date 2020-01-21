@@ -1,10 +1,10 @@
 {
   "name": "ngx-message-validator",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "peerDependencies": {
-    "@angular/common": "^8.2.14",
-    "@angular/core": "^8.2.14",
-    "@angular/animations": "^8.2.14",
-    "@angular/forms": "^8.2.14"
+    "@angular/common": "^8.0.0",
+    "@angular/core": "^8.0.0",
+    "@angular/animations": "^8.0.0",
+    "@angular/forms": "^8.0.0"
   }
 }
