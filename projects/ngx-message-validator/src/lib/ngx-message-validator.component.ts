@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Optional, Host, SkipSelf } from '@angular/core';
 import { NG_VALUE_ACCESSOR, AbstractControl, FormGroupDirective, ControlValueAccessor } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { NgxMessageValidatorService } from './ngx-message-validator.service';
+import { NgxMessageValidatorService, MessagesConfig } from './ngx-message-validator.service';
 
 @Component({
   selector: 'ngx-message-validator',
@@ -35,7 +35,7 @@ import { NgxMessageValidatorService } from './ngx-message-validator.service';
   ]
 })
 export class NgxMessageValidatorComponent implements ControlValueAccessor, OnInit {
-  @Input() messages: any = {};
+  @Input() messages: MessagesConfig = {};
   @Input() formControlName: string;
   protected innerValue;
   private changed = new Array<(value) => void>();
