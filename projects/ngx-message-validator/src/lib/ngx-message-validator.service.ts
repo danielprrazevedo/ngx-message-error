@@ -1,10 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
+
+export class MessagesConfig {
+  min: string;
+  max: string;
+  required: string;
+  requiredTrue: string;
+  email: string;
+  minLength: string;
+  maxLength: string;
+  [key: string]: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class NgxMessageValidatorService {
-  messages = {
+  constructor(@Optional() messages: MessagesConfig) {
+    if (messages) {
+      this.messages = Object.assign(this.messages, messages);
+    }
+  }
+
+  messages: MessagesConfig = {
     min: 'Please enter a value greater than or equal to {0}.',
     max: 'Please enter a value less than or equal to {0}.',
     required: 'This field is required.',

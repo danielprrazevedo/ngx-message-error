@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxMessageValidatorComponent } from './ngx-message-validator.component';
-import { NgxMessageValidatorService } from './ngx-message-validator.service';
+import { NgxMessageValidatorService, MessagesConfig } from './ngx-message-validator.service';
 
 @NgModule({
   declarations: [NgxMessageValidatorComponent],
@@ -9,4 +9,13 @@ import { NgxMessageValidatorService } from './ngx-message-validator.service';
   exports: [NgxMessageValidatorComponent],
   providers: [NgxMessageValidatorService]
 })
-export class NgxMessageValidatorModule { }
+export class NgxMessageValidatorModule {
+  static forRoot(messages: MessagesConfig): ModuleWithProviders {
+    return {
+      ngModule: NgxMessageValidatorModule,
+      providers: [
+        {provide: MessagesConfig, useValue: messages }
+      ]
+    };
+  }
+}
