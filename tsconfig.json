@@ -24,6 +24,12 @@
       ],
       "ngx-message-validator/*": [
         "dist/ngx-message-validator/*"
+      ],
+      "ngx-request-encapsulation": [
+        "dist/ngx-request-encapsulation"
+      ],
+      "ngx-request-encapsulation/*": [
+        "dist/ngx-request-encapsulation/*"
       ]
     }
   },

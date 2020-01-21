@@ -37,6 +37,41 @@
           }
         }
       }
+    },
+    "ngx-request-encapsulation": {
+      "projectType": "library",
+      "root": "projects/ngx-request-encapsulation",
+      "sourceRoot": "projects/ngx-request-encapsulation/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-request-encapsulation/tsconfig.lib.json",
+            "project": "projects/ngx-request-encapsulation/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-request-encapsulation/src/test.ts",
+            "tsConfig": "projects/ngx-request-encapsulation/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-request-encapsulation/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-request-encapsulation/tsconfig.lib.json",
+              "projects/ngx-request-encapsulation/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "ngx-message-validator"
 }
