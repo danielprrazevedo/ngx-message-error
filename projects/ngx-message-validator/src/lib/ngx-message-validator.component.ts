@@ -109,13 +109,11 @@ export class NgxMessageValidatorComponent implements ControlValueAccessor, OnIni
           message = message.replace('?', max.actualLength);
           message = message.replace('?', max.requiredLength);
         } else if (keyMessage[0] === 'min') {
-          const min = this.control.errors.min;
-          console.log(min);
-          // message = message.replace('?', min.actualLength);
+          const minError = this.control.errors.min;
+          message = message.replace('?', minError.min);
         } else if (keyMessage[0] === 'max') {
-          const max = this.control.errors.max;
-          console.log(max);
-          // message = message.replace('?', max.actualLength);
+          const maxError = this.control.errors.max;
+          message = message.replace('?', maxError.max);
         }
         return message;
       }
