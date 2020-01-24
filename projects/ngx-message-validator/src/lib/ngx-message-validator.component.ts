@@ -6,9 +6,7 @@ import { NgxMessageValidatorService, MessagesConfig } from './ngx-message-valida
 @Component({
   selector: 'ngx-message-validator',
   template: `
-    <div *ngIf="erro" class="danger" [@enterAnimation]="erro">
-      {{ erro }}
-    </div>
+    <div *ngIf="erro" class="danger" [@enterAnimation]="erro" [innerHTML]="erro"></div>
   `,
   styles: [
     'div { font-size: 12px; }',
