@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Optional, Host, SkipSelf } from '@angular/core';
 import { NG_VALUE_ACCESSOR, AbstractControl, FormGroupDirective, ControlValueAccessor } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { NgxMessageValidatorService, MessagesConfig } from './ngx-message-validator.service';
+import { NgxMessageErrorService, MessagesConfig } from './ngx-message-error.service';
 
 @Component({
-  selector: 'ngx-message-validator',
+  selector: 'ngx-message-error',
   template: `
     <div *ngIf="erro" class="danger" [@enterAnimation]="erro" [innerHTML]="erro"></div>
   `,
@@ -14,7 +14,7 @@ import { NgxMessageValidatorService, MessagesConfig } from './ngx-message-valida
   ],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: NgxMessageValidatorComponent,
+    useExisting: NgxMessageErrorComponent,
     multi: true
   }],
   animations: [
@@ -32,7 +32,7 @@ import { NgxMessageValidatorService, MessagesConfig } from './ngx-message-valida
     )
   ]
 })
-export class NgxMessageValidatorComponent implements ControlValueAccessor, OnInit {
+export class NgxMessageErrorComponent implements ControlValueAccessor, OnInit {
   @Input() messages: MessagesConfig = {};
   @Input() formControlName: string;
   protected innerValue;
@@ -85,7 +85,7 @@ export class NgxMessageValidatorComponent implements ControlValueAccessor, OnIni
   constructor(
     @Optional() @Host() @SkipSelf()
     private controlContainer: FormGroupDirective,
-    private service: NgxMessageValidatorService
+    private service: NgxMessageErrorService
   ) {
     const auxMessages = this.service.messages;
     this.messages = Object.assign(auxMessages, this.messages);

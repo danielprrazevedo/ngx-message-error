@@ -14,7 +14,7 @@ export class MessagesConfig {
 @Injectable({
   providedIn: 'root'
 })
-export class NgxMessageValidatorService {
+export class NgxMessageErrorService {
   constructor(@Optional() messages: MessagesConfig) {
     if (messages) {
       this.messages = Object.assign(this.messages, messages);
