@@ -19,11 +19,11 @@
       "dom"
     ],
     "paths": {
-      "ngx-message-validator": [
-        "dist/ngx-message-validator"
+      "ngx-message-error": [
+        "dist/ngx-message-error"
       ],
-      "ngx-message-validator/*": [
-        "dist/ngx-message-validator/*"
+      "ngx-message-error/*": [
+        "dist/ngx-message-error/*"
       ]
     }
   },

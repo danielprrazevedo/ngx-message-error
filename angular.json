@@ -3,33 +3,33 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-message-validator": {
+    "ngx-message-error": {
       "projectType": "library",
-      "root": "projects/ngx-message-validator",
-      "sourceRoot": "projects/ngx-message-validator/src",
+      "root": "projects/ngx-message-error",
+      "sourceRoot": "projects/ngx-message-error/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/ngx-message-validator/tsconfig.lib.json",
-            "project": "projects/ngx-message-validator/ng-package.json"
+            "tsConfig": "projects/ngx-message-error/tsconfig.lib.json",
+            "project": "projects/ngx-message-error/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-message-validator/src/test.ts",
-            "tsConfig": "projects/ngx-message-validator/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-message-validator/karma.conf.js"
+            "main": "projects/ngx-message-error/src/test.ts",
+            "tsConfig": "projects/ngx-message-error/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-message-error/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ngx-message-validator/tsconfig.lib.json",
-              "projects/ngx-message-validator/tsconfig.spec.json"
+              "projects/ngx-message-error/tsconfig.lib.json",
+              "projects/ngx-message-error/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -37,6 +37,7 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngx-message-validator"
+    }
+  },
+  "defaultProject": "ngx-message-error"
 }
