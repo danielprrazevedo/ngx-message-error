@@ -86,10 +86,7 @@ export class NgxMessageErrorComponent implements ControlValueAccessor, OnInit {
     @Optional() @Host() @SkipSelf()
     private controlContainer: FormGroupDirective,
     private service: NgxMessageErrorService
-  ) {
-    const auxMessages = this.service.messages;
-    this.messages = Object.assign(auxMessages, this.messages);
-  }
+  ) { }
 
   private buildMessage() {
     const keysErrors = Object.keys(this.control.errors);
@@ -120,6 +117,8 @@ export class NgxMessageErrorComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit() {
+    const auxMessages = this.service.messages;
+    this.messages = {...auxMessages, ...this.messages};
     if (this.controlContainer) {
       if (this.formControlName) {
         this.control = this.controlContainer.control.get(this.formControlName);
