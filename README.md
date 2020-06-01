@@ -1,27 +1,122 @@
-# MyWorkspace
+# ngx-message-error
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.22.
+The component's purpose is to encapsulate the message display logic for form validations made with `ReactiveForms`.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+npm i ngx-message-error
+```
 
-## Code scaffolding
+### Requirements
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+````
+@angular/animations
+````
+In `app.module.ts`
+``` typescript
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+...
+@NgModule({
+  imports: [
+    ...
+    BrowserAnimationsModule
+  ]
+})
+```
 
-## Build
+## Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+In `app.module.ts`
+``` typescript
+import { NgxMessageErrorModule, MessagesConfig } from 'ngx-message-error';
 
-## Running unit tests
+/**
+ * the customMessages is optional
+ * here you will define the default messages for your application,
+ * if you use a library with extra validations, you can define the keys here
+ */
+const customMessages: MessagesConfig = {
+  ...
+}
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+...
+@NgModule({
+  imports: [
+    ...
+    NgxMessageErrorModule.forRoot(customMessages)
+  ]
+})
+```
 
-## Running end-to-end tests
+NOTE #
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+for min and max validations, the character `?` will be like a wildcard for a replace of the value indicated in the Validator
+Ex:
+``` typescript
+Validator.min(5)
+message = 'my min message (?)' // result: my min message (5)
+```
+for minLength and maxLength validations, the first character `?` will be used for the length of the form and the second will be used as a wildcard for a replace of the value indicated in the Validator
+Ex:
+``` typescript
+Validator.maxLength(5)
+message = 'my minLength message (?/?)'
+control.value = 'my control value' // my minLength message (16/5)
+```
 
-## Further help
+In component:
+``` typescript
+constructor(private fb: FormBuilder) {}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ngOnInit() {
+  this.myForm = this.fb.group({
+    requiredInput: ['', [Validators.required]]
+  });
+}
+```
+``` html
+<form [formGroup]="myForm">
+  <fieldset>
+    <legend>Custom Message Validation</legend>
+    <div>
+      <label>
+        Custom Validation:<br>
+        <input formControlName="requiredInput">
+      </label><br>
+      <ngx-message-error formControlName="requiredInput"></ngx-message-error>
+    </div>
+    <button type="submit">Submit</button>
+  </fieldset>
+</form>
+```
+With custom validator
+``` typescript
+constructor(private fb: FormBuilder) {}
+
+ngOnInit() {
+  const equalTo = (value) => ((control: FormControl) => {
+    if (control.value === value) return null;
+    return { equalto: true };
+  });
+  this.myForm = this.fb.group({
+    customValidation: ['', [equalTo('myform')]],
+  });
+}
+```
+``` html
+<form [formGroup]="myForm">
+  <fieldset>
+    <legend>Custom Message Validation</legend>
+    <div>
+      <label>
+        Custom Validation equalto (myform):<br>
+        <input formControlName="customValidation">
+      </label><br>
+      <ngx-message-error formControlName="customValidation"
+        [messages]="{ equalto: 'My custom validation with message' }"></ngx-message-error>
+    </div>
+    <button type="submit">Submit</button>
+  </fieldset>
+</form>
+```
