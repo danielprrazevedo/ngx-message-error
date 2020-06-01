@@ -1,0 +1,97 @@
+<form [formGroup]="simpleForm">
+  <fieldset>
+    <legend>Simple Validation</legend>
+    <div>
+      <label>
+        Required:<br>
+        <input formControlName="required">
+      </label><br>
+      <ngx-message-error formControlName="required"></ngx-message-error>
+    </div>
+    <div>
+      <label>
+        Email:<br>
+        <input formControlName="email">
+      </label><br>
+      <ngx-message-error formControlName="email"></ngx-message-error>
+    </div>
+    <div>
+      <label>
+        Min Length 5:<br>
+        <input formControlName="minlength">
+      </label><br>
+      <ngx-message-error formControlName="minlength"></ngx-message-error>
+    </div>
+    <div>
+      <label>
+        Max Length 10:<br>
+        <input formControlName="maxlength">
+      </label><br>
+      <ngx-message-error formControlName="maxlength"></ngx-message-error>
+    </div>
+    <div>
+      <label>
+        Min Number 5:<br>
+        <input formControlName="min" type="number">
+      </label><br>
+      <ngx-message-error formControlName="min"></ngx-message-error>
+    </div>
+    <div>
+      <label>
+        Max Number 5:<br>
+        <input formControlName="max" type="number">
+      </label><br>
+      <ngx-message-error formControlName="max"></ngx-message-error>
+    </div>
+    <button type="submit">Submit</button>
+  </fieldset>
+</form>
+<div class="codes">
+  <pre>
+    <code [lineNumbers]="true" [languages]="['typescript']" [highlight]="codeSimpleForm"></code>
+  </pre>
+</div>
+<form [formGroup]="customMessagesForm">
+  <fieldset>
+    <legend>Custom Message Validation</legend>
+    <div>
+      <label>
+        Custom Input:<br>
+        <input formControlName="customMessage">
+      </label><br>
+      <ngx-message-error formControlName="customMessage" [messages]="{ required: 'My custom message' }">
+      </ngx-message-error>
+    </div>
+    <button type="submit">Submit</button>
+  </fieldset>
+</form>
+<div class="codes">
+  <pre>
+    <code [lineNumbers]="true" [languages]="['typescript']" [highlight]="codeCustomMessageTs"></code>
+  </pre>
+  <pre>
+    <code [lineNumbers]="true" [languages]="['html']" [highlight]="codeCustomMessageHtml"></code>
+  </pre>
+</div>
+<form [formGroup]="customValidationForm">
+  <fieldset>
+    <legend>Custom Message Validation</legend>
+    <div>
+      <label>
+        Custom Validation equalto (myform):<br>
+        <input formControlName="customValidation">
+      </label><br>
+      <ngx-message-error formControlName="customValidation"
+        [messages]="{ equalto: 'My custom validation with message' }"></ngx-message-error>
+    </div>
+    <button type="submit">Submit</button>
+  </fieldset>
+</form>
+<div class="codes">
+  <pre>
+    <code [lineNumbers]="true" [languages]="['typescript']" [highlight]="codeCustomValidatorTs"></code>
+  </pre>
+  <pre>
+    <code [lineNumbers]="true" [languages]="['html']" [highlight]="codeCustomValidatorHtml"></code>
+  </pre>
+</div>
