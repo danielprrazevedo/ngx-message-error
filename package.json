@@ -23,7 +23,7 @@
     "@angular/platform-browser": "^9.1.9",
     "@angular/platform-browser-dynamic": "^9.1.9",
     "@angular/router": "^9.1.9",
-    "highlight.js": "^9.18.1",
+    "highlight.js": "^10.4.1",
     "highlightjs-line-numbers.js": "^2.7.0",
     "ngx-highlightjs": "^4.0.2",
     "rxjs": "^6.5.5",
