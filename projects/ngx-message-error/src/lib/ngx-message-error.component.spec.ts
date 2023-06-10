@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 
 import { NgxMessageErrorComponent } from './ngx-message-error.component';
 
@@ -6,7 +6,7 @@ describe('NgxMessageErrorComponent', () => {
   let component: NgxMessageErrorComponent;
   let fixture: ComponentFixture<NgxMessageErrorComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NgxMessageErrorComponent ]
     })
