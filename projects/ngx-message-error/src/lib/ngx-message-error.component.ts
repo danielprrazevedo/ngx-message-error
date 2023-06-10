@@ -1,28 +1,43 @@
-import { Component, OnInit, Input, Optional, Host, SkipSelf, Directive as  } from '@angular/core';
-import { NG_VALUE_ACCESSOR, AbstractControl, FormGroupDirective, ControlValueAccessor } from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  Input,
+  Optional,
+  Host,
+  SkipSelf,
+} from '@angular/core';
+import {
+  NG_VALUE_ACCESSOR,
+  AbstractControl,
+  FormGroupDirective,
+  ControlValueAccessor,
+} from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { NgxMessageErrorService, MessagesConfig } from './ngx-message-error.service';
+import {
+  NgxMessageErrorService,
+  MessagesConfig,
+} from './ngx-message-error.service';
 
-@()
-@()
-@Directive()
 @Component({
   selector: 'ngx-message-error',
   template: `
-    <div *ngIf="erro" class="danger" [@enterAnimation]="erro" [innerHTML]="erro"></div>
+    <div
+      *ngIf="erro"
+      class="danger"
+      [@enterAnimation]="erro"
+      [innerHTML]="erro"
+    ></div>
   `,
-  styles: [
-    'div { font-size: 12px; }',
-    '.danger { color: red; }'
+  styles: ['div { font-size: 12px; }', '.danger { color: red; }'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: NgxMessageErrorComponent,
+      multi: true,
+    },
   ],
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: NgxMessageErrorComponent,
-    multi: true
-  }],
   animations: [
-    trigger(
-      'enterAnimation', [
+    trigger('enterAnimation', [
       transition(':enter', [
         style({ transform: 'translateY(-5px)', opacity: 0 }),
         animate('300ms', style({ transform: 'translateY(0)', opacity: 1 })),
@@ -30,10 +45,9 @@ import { NgxMessageErrorService, MessagesConfig } from './ngx-message-error.serv
       transition(':leave', [
         style({ transform: 'translateY(0)', opacity: 1 }),
         animate('300ms', style({ transform: 'translateY(-5px)', opacity: 0 })),
-      ])
-    ]
-    )
-  ]
+      ]),
+    ]),
+  ],
 })
 export class NgxMessageErrorComponent implements ControlValueAccessor, OnInit {
   @Input() messages: MessagesConfig = {};
@@ -50,12 +64,12 @@ export class NgxMessageErrorComponent implements ControlValueAccessor, OnInit {
   set value(value) {
     if (this.innerValue !== value) {
       this.innerValue = value;
-      this.changed.forEach(f => f(value));
+      this.changed.forEach((f) => f(value));
     }
   }
 
   touch() {
-    this.touched.forEach(f => f());
+    this.touched.forEach((f) => f());
   }
 
   writeValue(value) {
@@ -79,23 +93,30 @@ export class NgxMessageErrorComponent implements ControlValueAccessor, OnInit {
   }
 
   public get erro() {
-    if (this.control.invalid && (this.control.touched || this.control.dirty || this.controlContainer.submitted)) {
+    if (
+      this.control.invalid &&
+      (this.control.touched ||
+        this.control.dirty ||
+        this.controlContainer.submitted)
+    ) {
       return this.buildMessage();
     }
     return '';
   }
 
   constructor(
-    @Optional() @Host() @SkipSelf()
+    @Optional()
+    @Host()
+    @SkipSelf()
     private controlContainer: FormGroupDirective,
     private service: NgxMessageErrorService
-  ) { }
+  ) {}
 
   private buildMessage() {
     const keysErrors = Object.keys(this.control.errors);
     if (keysErrors.length > 0) {
       const keysMessages = Object.keys(this.messages);
-      const keyMessage = keysMessages.filter(key => key === keysErrors[0]);
+      const keyMessage = keysMessages.filter((key) => key === keysErrors[0]);
       if (keyMessage.length > 0) {
         let message = this.messages[keyMessage[0]];
         if (keyMessage[0] === 'maxlength') {
@@ -121,15 +142,17 @@ export class NgxMessageErrorComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit() {
     const auxMessages = this.service.messages;
-    this.messages = {...auxMessages, ...this.messages};
+    this.messages = { ...auxMessages, ...this.messages };
     if (this.controlContainer) {
       if (this.formControlName) {
         this.control = this.controlContainer.control.get(this.formControlName);
       } else {
-        console.warn('Missing FormControlName directive from host element of the component');
+        console.warn(
+          'Missing FormControlName directive from host element of the component'
+        );
       }
     } else {
-      console.warn('Can\'t find parent FormGroup directive');
+      console.warn("Can't find parent FormGroup directive");
     }
   }
 }
