@@ -1,8 +1,11 @@
-import { Component, OnInit, Input, Optional, Host, SkipSelf } from '@angular/core';
+import { Component, OnInit, Input, Optional, Host, SkipSelf, Directive as  } from '@angular/core';
 import { NG_VALUE_ACCESSOR, AbstractControl, FormGroupDirective, ControlValueAccessor } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { NgxMessageErrorService, MessagesConfig } from './ngx-message-error.service';
 
+@()
+@()
+@Directive()
 @Component({
   selector: 'ngx-message-error',
   template: `

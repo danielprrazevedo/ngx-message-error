@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Directive as  } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -6,6 +6,8 @@ import {
   FormControl,
 } from '@angular/forms';
 
+@()
+@Directive()
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

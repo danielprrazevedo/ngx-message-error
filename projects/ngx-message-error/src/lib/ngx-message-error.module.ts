@@ -9,7 +9,7 @@ import { MessagesConfig } from './ngx-message-error.service';
   exports: [NgxMessageErrorComponent],
 })
 export class NgxMessageErrorModule {
-  static forRoot(@Optional() @SkipSelf() messages?: MessagesConfig): ModuleWithProviders {
+  static forRoot(@Optional() @SkipSelf() messages?: MessagesConfig): ModuleWithProviders<NgxMessageErrorModule> {
     return {
       ngModule: NgxMessageErrorModule,
       providers: [{ provide: MessagesConfig, useValue: messages }],
