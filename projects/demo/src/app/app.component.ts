@@ -1,4 +1,4 @@
-import { Component, OnInit, Directive as  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   UntypedFormGroup,
   UntypedFormBuilder,
@@ -6,8 +6,6 @@ import {
   UntypedFormControl,
 } from '@angular/forms';
 
-@()
-@Directive()
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -78,10 +76,10 @@ this.customValidationForm = this.fb.group({
     this.customMessagesForm = this.fb.group({
       customMessage: ['', [Validators.required]],
     });
-    const equalTo = (value) => ((control: UntypedFormControl) => {
+    const equalTo = (value) => (control: UntypedFormControl) => {
       if (control.value === value) return null;
       return { equalto: true };
-    });
+    };
     this.customValidationForm = this.fb.group({
       customValidation: ['', [equalTo('myform')]],
     });

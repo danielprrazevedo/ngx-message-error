@@ -47,11 +47,14 @@
             "tsConfig": "projects/demo/tsconfig.app.json",
             "assets": [
               "projects/demo/src/favicon.ico",
-              "projects/demo/src/assets"
+              "projects/demo/src/assets",
+              {
+                "glob": "**/github-dark.css",
+                "input": "./node_modules/highlight.js/styles/",
+                "output": "./assets/"
+              }
             ],
-            "styles": [
-              "projects/demo/src/styles.scss"
-            ],
+            "styles": ["projects/demo/src/styles.scss"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -119,9 +122,7 @@
               "projects/demo/src/favicon.ico",
               "projects/demo/src/assets"
             ],
-            "styles": [
-              "projects/demo/src/styles.scss"
-            ],
+            "styles": ["projects/demo/src/styles.scss"],
             "scripts": []
           }
         },

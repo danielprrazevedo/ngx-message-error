@@ -37,10 +37,17 @@ export function getHighlightLanguages() {
   providers: [
     {
       provide: HIGHLIGHT_OPTIONS,
-      useValue: {
+      useValue: <HighlightOptions>{
         lineNumbers: true,
-        // languages: getHighlightLanguages()
-      } as HighlightOptions,
+        coreLibraryLoader: () => import('highlight.js/lib/core'),
+        lineNumbersLoader: () => import('highlightjs-line-numbers.js'),
+        themePath: '/assets/github-dark.css',
+        languages: {
+          typescript: () => import('highlight.js/lib/languages/typescript'),
+          css: () => import('highlight.js/lib/languages/css'),
+          xml: () => import('highlight.js/lib/languages/xml'),
+        },
+      },
     },
   ],
   bootstrap: [AppComponent],

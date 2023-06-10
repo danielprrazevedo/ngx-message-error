@@ -1,60 +1,110 @@
-/* You can add global styles to this file, and also import other style files */
+/* Add application styles & imports to this file! */
+
+*:not(code) {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+code {
+  margin: 8px 0;
+}
+
+.form-container {
+  margin: 4px 0;
+}
+
+fieldset {
+  border-radius: 4px;
+  border: 1px solid #a5a5a5;
+  margin: 8px 0;
+}
+
+input {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #c5c5c5;
+  transition: all ease-in 0.2s;
+  box-sizing: content-box;
+  &:focus-visible {
+    outline: none;
+  }
+  &:focus {
+    border: inherit;
+    outline: 2px solid #c5c5ff;
+  }
+}
+
+button {
+  color: white;
+  background-color: #1a56db;
+  border-radius: 4px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: none;
+
+  &:hover {
+    background-color: #1e429f;
+  }
+  &:active {
+    box-shadow: white 0px 0px 0px 0px, #a4cafe 0px 0px 0px 4px,
+      #00000000 0px 0px 0px 0px box-sizing border-box;
+  }
+}
+
 ::ng-deep {
-  .codes {
-    font-family: 'Spectral SC', serif;
-    margin: 0;
+  pre {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 0;
+    word-wrap: break-word;
 
-    pre {
-      code {
-        flex: 1;
-        line-height: 1.5em;
-        font-size: 14px;
-        min-height: 100%;
-        padding: 1em 1.2em;
+    code {
+      flex: 1;
+      line-height: 1.5em;
+      font-size: 14px;
+      min-height: 100%;
+      padding: 1em 1.2em;
 
-        &.hljs-line-numbers {
-          padding: 0;
-        }
+      &.hljs-line-numbers {
+        padding: 0 !important;
       }
     }
+  }
 
+  /** Line numbers styles */
+  .hljs {
+    margin: 0 1em;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    transition: border ease 1s;
+  }
 
-    /** Line numbers styles */
-    .hljs {
-      margin: 0 1em;
-      padding: 10px;
-      border: 1px solid gray;
-      border-radius: 4px;
-      transition: border ease 1s;
-    }
+  .hljs-ln {
+    padding: 8px 0;
 
-    .hljs-ln {
-      padding: 8px 0;
+    tr {
+      &:first-child td {
+        padding-top: 8px !important;
+      }
 
-      tr {
-        &:first-child td {
-          padding-top: 8px;
-        }
-
-        &:last-child td {
-          padding-bottom: 8px;
-        }
+      &:last-child td {
+        padding-bottom: 8px !important;
       }
     }
+  }
 
-    /* for block of numbers */
-    td.hljs-ln-numbers {
-      user-select: none;
-      text-align: center;
-      border-right: 1px solid gray;
-      vertical-align: top;
-      padding-right: 8px;
-      padding-left: 8px;
-    }
+  /* for block of numbers */
+  td.hljs-ln-numbers {
+    user-select: none;
+    text-align: center;
+    border-right: 1px solid gray;
+    vertical-align: top;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+  }
 
-    /* for block of code */
-    td.hljs-ln-code {
-      padding-left: 8px;
-    }
+  /* for block of code */
+  td.hljs-ln-code {
+    padding-left: 8px !important;
   }
 }

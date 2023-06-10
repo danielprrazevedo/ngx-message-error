@@ -1,47 +1,53 @@
 <form [formGroup]="simpleForm">
   <fieldset>
     <legend>Simple Validation</legend>
-    <div>
+    <div class="form-container">
       <label>
-        Required:<br>
-        <input formControlName="required">
-      </label><br>
-      <ngx-message-error formControlName="required"></ngx-message-error>
+        Required:<br />
+        <input formControlName="required" />
+      </label>
+      <br />
+      <ngx-message-error formControlName="required" />
     </div>
-    <div>
+    <div class="form-container">
       <label>
-        Email:<br>
-        <input formControlName="email">
-      </label><br>
-      <ngx-message-error formControlName="email"></ngx-message-error>
+        Email:<br />
+        <input formControlName="email" />
+      </label>
+      <br />
+      <ngx-message-error formControlName="email" />
     </div>
-    <div>
+    <div class="form-container">
       <label>
-        Min Length 5:<br>
-        <input formControlName="minlength">
-      </label><br>
-      <ngx-message-error formControlName="minlength"></ngx-message-error>
+        Min Length 5:<br />
+        <input formControlName="minlength" />
+      </label>
+      <br />
+      <ngx-message-error formControlName="minlength" />
     </div>
-    <div>
+    <div class="form-container">
       <label>
-        Max Length 10:<br>
-        <input formControlName="maxlength">
-      </label><br>
-      <ngx-message-error formControlName="maxlength"></ngx-message-error>
+        Max Length 10:<br />
+        <input formControlName="maxlength" />
+      </label>
+      <br />
+      <ngx-message-error formControlName="maxlength" />
     </div>
-    <div>
+    <div class="form-container">
       <label>
-        Min Number 5:<br>
-        <input formControlName="min" type="number">
-      </label><br>
-      <ngx-message-error formControlName="min"></ngx-message-error>
+        Min Number 5:<br />
+        <input formControlName="min" type="number" />
+      </label>
+      <br />
+      <ngx-message-error formControlName="min" />
     </div>
-    <div>
+    <div class="form-container">
       <label>
-        Max Number 5:<br>
-        <input formControlName="max" type="number">
-      </label><br>
-      <ngx-message-error formControlName="max"></ngx-message-error>
+        Max Number 5:<br />
+        <input formControlName="max" type="number" />
+      </label>
+      <br />
+      <ngx-message-error formControlName="max" />
     </div>
     <button type="submit">Submit</button>
   </fieldset>
@@ -54,12 +60,16 @@
 <form [formGroup]="customMessagesForm">
   <fieldset>
     <legend>Custom Message Validation</legend>
-    <div>
+    <div class="form-container">
       <label>
-        Custom Input:<br>
-        <input formControlName="customMessage">
-      </label><br>
-      <ngx-message-error formControlName="customMessage" [messages]="{ required: 'My custom message' }">
+        Custom Input:<br />
+        <input formControlName="customMessage" />
+      </label>
+      <br />
+      <ngx-message-error
+        formControlName="customMessage"
+        [messages]="{ required: 'My custom message' }"
+      >
       </ngx-message-error>
     </div>
     <button type="submit">Submit</button>
@@ -76,13 +86,16 @@
 <form [formGroup]="customValidationForm">
   <fieldset>
     <legend>Custom Message Validation</legend>
-    <div>
+    <div class="form-container">
       <label>
-        Custom Validation equalto (myform):<br>
-        <input formControlName="customValidation">
-      </label><br>
-      <ngx-message-error formControlName="customValidation"
-        [messages]="{ equalto: 'My custom validation with message' }"></ngx-message-error>
+        Custom Validation equalto (myform):<br />
+        <input formControlName="customValidation" />
+      </label>
+      <br />
+      <ngx-message-error
+        formControlName="customValidation"
+        [messages]="{ equalto: 'My custom validation with message' }"
+      />
     </div>
     <button type="submit">Submit</button>
   </fieldset>
