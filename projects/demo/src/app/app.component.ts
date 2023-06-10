@@ -1,9 +1,9 @@
 import { Component, OnInit, Directive as  } from '@angular/core';
 import {
-  FormGroup,
-  FormBuilder,
+  UntypedFormGroup,
+  UntypedFormBuilder,
   Validators,
-  FormControl,
+  UntypedFormControl,
 } from '@angular/forms';
 
 @()
@@ -14,9 +14,9 @@ import {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  simpleForm: FormGroup;
-  customMessagesForm: FormGroup;
-  customValidationForm: FormGroup;
+  simpleForm: UntypedFormGroup;
+  customMessagesForm: UntypedFormGroup;
+  customValidationForm: UntypedFormGroup;
 
   codeSimpleForm = `this.simpleForm = this.fb.group({
   min: ['', [Validators.min(5)]],
@@ -64,7 +64,7 @@ this.customValidationForm = this.fb.group({
   </fieldset>
 </form>`;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {}
 
   ngOnInit() {
     this.simpleForm = this.fb.group({
@@ -78,7 +78,7 @@ this.customValidationForm = this.fb.group({
     this.customMessagesForm = this.fb.group({
       customMessage: ['', [Validators.required]],
     });
-    const equalTo = (value) => ((control: FormControl) => {
+    const equalTo = (value) => ((control: UntypedFormControl) => {
       if (control.value === value) return null;
       return { equalto: true };
     });
