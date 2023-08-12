@@ -97,7 +97,7 @@ export class NgxMessageErrorComponent implements ControlValueAccessor, OnInit {
       this.control.invalid &&
       (this.control.touched ||
         this.control.dirty ||
-        this.controlContainer.submitted)
+        this.controlContainer.touched)
     ) {
       return this.buildMessage();
     }
