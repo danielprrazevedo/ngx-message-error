@@ -21,13 +21,14 @@ import {
 @Component({
   selector: 'ngx-message-error',
   template: `
-    <div
-      *ngIf="erro"
-      class="danger"
-      [@enterAnimation]="erro"
-      [innerHTML]="erro"
-    ></div>
-  `,
+    @if (erro) {
+      <div
+        class="danger"
+        [@enterAnimation]="erro"
+        [innerHTML]="erro"
+      ></div>
+    }
+    `,
   styles: ['div { font-size: 12px; }', '.danger { color: red; }'],
   providers: [
     {
