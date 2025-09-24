@@ -8,21 +8,52 @@ The component's purpose is to encapsulate the message display logic for form val
 npm i ngx-message-error
 ```
 
-### Requirements
+## Styling
 
-````
-@angular/animations
-````
-In `app.module.ts`
-``` typescript
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-...
-@NgModule({
-  imports: [
-    ...
-    BrowserAnimationsModule
-  ]
-})
+The component uses CSS custom properties (CSS variables) for styling, making it easy to customize the appearance. You can override these variables globally or target specific instances:
+
+### Available CSS Custom Properties
+
+- `--message-error-color`: Controls the text color of error messages (default: `#a94442`)
+- `--message-error-font-size`: Controls the font size of error messages (default: `12px`)
+
+### Global Styling
+
+To style all error messages globally, add the following to your global styles:
+
+```css
+:root {
+  --message-error-color: #dc3545; /* Bootstrap danger color */
+  --message-error-font-size: 14px;
+}
+```
+
+### Component-specific Styling
+
+To style error messages for specific components or sections:
+
+```css
+.my-form {
+  --message-error-color: #e74c3c;
+  --message-error-font-size: 13px;
+}
+```
+
+### Custom CSS Classes
+
+You can also target the component directly with CSS:
+
+```css
+ngx-message-error .danger {
+  color: #ff0000;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+ngx-message-error div {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.4;
+}
 ```
 
 ## Usage
