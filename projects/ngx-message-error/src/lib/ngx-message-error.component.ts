@@ -22,32 +22,56 @@ import {
   selector: 'ngx-message-error',
   template: `
     @if (erro) {
-      <div
-        class="danger"
-        [@enterAnimation]="erro"
-        [innerHTML]="erro"
-      ></div>
+    <div
+      class="danger"
+      animate.enter="enter-animation"
+      animate.leave="leave-animation"
+      [innerHTML]="erro"
+    ></div>
     }
+  `,
+  styles: [
+    `
+      div {
+        font-size: var(--message-error-font-size, 12px);
+      }
+      .danger {
+        color: var(--message-error-color, #a94442);
+      }
+      .enter-animation {
+        animation: enterAnimation 0.3s;
+      }
+      @keyframes enterAnimation {
+        from {
+          transform: translateY(-5px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .leave-animation {
+        animation: leaveAnimation 0.3s;
+      }
+      @keyframes leaveAnimation {
+        from {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateY(-5px);
+          opacity: 0;
+        }
+      }
     `,
-  styles: ['div { font-size: 12px; }', '.danger { color: red; }'],
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: NgxMessageErrorComponent,
       multi: true,
     },
-  ],
-  animations: [
-    trigger('enterAnimation', [
-      transition(':enter', [
-        style({ transform: 'translateY(-5px)', opacity: 0 }),
-        animate('300ms', style({ transform: 'translateY(0)', opacity: 1 })),
-      ]),
-      transition(':leave', [
-        style({ transform: 'translateY(0)', opacity: 1 }),
-        animate('300ms', style({ transform: 'translateY(-5px)', opacity: 0 })),
-      ]),
-    ]),
   ],
   standalone: false,
 })
