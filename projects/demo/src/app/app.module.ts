@@ -6,7 +6,10 @@ import {
   HIGHLIGHT_OPTIONS,
   HighlightOptions,
 } from 'ngx-highlightjs';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NgxMessageErrorModule } from 'projects/ngx-message-error/src/public-api';
@@ -26,11 +29,11 @@ export function getHighlightLanguages() {
 
 @NgModule({
   declarations: [AppComponent],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     NgxMessageErrorModule.forRoot(),
     HighlightModule,
   ],
@@ -49,7 +52,7 @@ export function getHighlightLanguages() {
         },
       },
     },
+    provideHttpClient(withInterceptorsFromDi()),
   ],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}

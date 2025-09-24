@@ -48,6 +48,7 @@ import {
       ]),
     ]),
   ],
+  standalone: false,
 })
 export class NgxMessageErrorComponent implements ControlValueAccessor, OnInit {
   @Input() messages: MessagesConfig = {};
