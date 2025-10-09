@@ -151,3 +151,13 @@ ngOnInit() {
   </fieldset>
 </form>
 ```
+
+## Release automation
+
+Publishing to npm is handled by a GitHub Actions workflow that runs whenever a Git tag that starts with `v` (for example, `v20.0.1`) is pushed. The workflow will:
+
+- run `npm ci` and build the library with `npm run build ngx-message-error`
+- verify the tag matches the version field in `projects/ngx-message-error/package.json`
+- publish the contents of `dist/ngx-message-error` to npm
+
+To enable publishing, add an `NPM_TOKEN` secret to the repository settings containing an npm access token with publish rights for `ngx-message-error`. To release a new version, bump the version in `projects/ngx-message-error/package.json`, commit the change, create a matching tag (`git tag v<version>`), and push it (`git push origin v<version>`).
