@@ -160,4 +160,14 @@ Publishing to npm is handled by a GitHub Actions workflow that runs whenever a G
 - verify the tag matches the version field in `projects/ngx-message-error/package.json`
 - publish the contents of `dist/ngx-message-error` to npm
 
-To enable publishing, add an `NPM_TOKEN` secret to the repository settings containing an npm access token with publish rights for `ngx-message-error`. To release a new version, bump the version in `projects/ngx-message-error/package.json`, commit the change, create a matching tag (`git tag v<version>`), and push it (`git push origin v<version>`).
+To enable publishing, add an `NPM_TOKEN` secret to the repository settings containing an npm access token with publish rights for `ngx-message-error`.
+
+### Release helper scripts
+
+Use one of the following scripts to bump the version, commit the change, tag it, and push the updated branch and tag to GitHub:
+
+- `npm run tag:patch`
+- `npm run tag:minor`
+- `npm run tag:major`
+
+Each script keeps the root `package.json` and `projects/ngx-message-error/package.json` in sync and finishes by pushing to the `origin` remote.

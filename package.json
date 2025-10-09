@@ -11,7 +11,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "tag:patch": "node scripts/release.js patch",
+    "tag:minor": "node scripts/release.js minor",
+    "tag:major": "node scripts/release.js major"
   },
   "private": true,
   "dependencies": {
@@ -48,6 +51,7 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "ng-packagr": "^20.3.0",
     "protractor": "~7.0.0",
+    "semver": "^7.7.3",
     "ts-node": "^8.10.2",
     "tslint": "~6.1.0",
     "typescript": "^5.8.3"
