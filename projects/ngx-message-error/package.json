@@ -5,6 +5,7 @@
     "type": "git",
     "url": "https://github.com/danielprrazevedo/ngx-message-error.git"
   },
+  "license": "MIT",
   "keywords": [
     "ngx",
     "error",
